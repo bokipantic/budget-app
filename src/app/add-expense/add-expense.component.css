@@ -1,0 +1,80 @@
+.center {   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 100px;
+    left: -0.5%;
+    width: 100.5%;
+    background: white;
+}
+button {
+    width: 92%;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+.flex-container {
+    display: flex;
+    margin-top: 55px;
+    margin-bottom: 45px;
+}
+.flex-container > div {
+    text-align: center;
+    font-size: 16px;
+}
+.full-width {
+    width: 100%;
+}
+input {
+    padding-left: 5%;
+    font-size: 14px;
+    line-height: 17px;
+}
+.border {
+    color: rgba(0, 0, 0, 0.1);
+    font-size: 30px;
+}
+.currency {
+    font-size: 12px;
+    opacity: 0.6; 
+    padding-left: 5px;
+}
+.category {
+    margin-top: 30px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    font-weight: 450;
+    opacity: 0.85;
+}
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.radio-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 0;
+}
+mat-radio-button:hover {
+    background: rgba(127, 196, 129, 0.08);
+    border-radius: 10px;
+}
+#name {
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 2px;
+}
+#description {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.6);
+}
+img {
+    margin: 0 15px;
+}

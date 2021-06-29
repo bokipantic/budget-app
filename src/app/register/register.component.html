@@ -1,0 +1,35 @@
+<div class="logo">
+    <img src="assets/logo.png" alt="logo">
+    <p>
+        <span style="font-size: 16px; font-weight: 500;">Welcome to Budget App</span>
+        <br>
+        <span style="font-size: 12px;">Fill in the fields to continue</span>
+    </p>
+</div>
+<form #f="ngForm" (ngSubmit)="onRegister(f)">
+    <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput name="username" ngModel required>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel required>
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon fontSet="material-icons-outlined">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" class="full-width">
+        <mat-label>First name (optional)</mat-label>
+        <input matInput name="firstName" ngModel>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Last name (optional)</mat-label>
+        <input matInput name="lastName" ngModel>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="!f.valid">Register</button>
+    <p>Already have an account? <a routerLink="/login">Log in</a></p>
+</form>

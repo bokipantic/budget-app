@@ -1,0 +1,33 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0 20px 0;
+    position: fixed;
+    bottom: 0;
+    left: -0.5%;
+    width: 100.5%;
+    background: white;
+    box-shadow: 0px -2px 11px rgba(0, 0, 0, 0.04);
+}
+a {
+    text-decoration: none;
+}
+p {
+    font-size: 10px;
+    line-height: 12px;
+    color: black;
+}
+p:hover {
+    color: #5E9C60;
+}
+path:hover {
+    fill: #5E9C60;
+}
+.active p {
+    color: #5E9C60;
+}
+.active path {
+    fill: #5E9C60;
+}

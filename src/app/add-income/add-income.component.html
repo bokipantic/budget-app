@@ -1,0 +1,39 @@
+<div class="flex-container">
+    <a routerLink="../../">
+        <span class="material-icons-outlined" style="flex-grow: 1; font-size: 19px;">arrow_back_ios</span>
+    </a>
+    <div style="flex-grow: 10;">Add an income</div>
+</div>
+<form #f="ngForm" (ngSubmit)="onAddIncome()">
+    <mat-form-field appearance="standard" class="full-width">
+        <input matInput placeholder="Enter amount here" name="amount" ngModel required
+            pattern="^(?:[1-9]\d*|0)?(?:\.\d+)?$">
+        <span matSuffix class="border">|</span>
+        <span matSuffix class="currency">RSD</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" class="full-width">
+        <input matInput placeholder="Enter description" name="description" ngModel required>
+    </mat-form-field>
+
+    <p class="category">Choose category</p>
+    <mat-radio-group class="radio-group" ngModel name="category" required>
+        <mat-radio-button color="primary" *ngFor="let incomeTransaction of incomeTransactionCategories"
+            [value]="incomeTransaction.id" disableRipple>
+            <div class="radio-button">
+                <img src="https://budgetapp.digitalcube.rs/assets/icons/categories/{{ incomeTransaction.icon_png }}"
+                    alt="category" height="34px">
+                <div>
+                    <div id="name">{{ incomeTransaction.name }}</div>
+                    <div id="description">{{ incomeTransaction.description }}</div>
+                </div>
+            </div>
+        </mat-radio-button>
+    </mat-radio-group>
+
+    <div class="center">
+        <button mat-flat-button color="primary" type="submit" [disabled]="f.invalid">Add an income</button>
+    </div>
+</form>
+
+<app-bottom-navigation></app-bottom-navigation>
