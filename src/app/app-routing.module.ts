@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'wallet', component: WalletComponent },
   { path: 'wallet/income/add', component: AddIncomeComponent },
   { path: 'wallet/expense/add', component: AddExpenseComponent },
-  { path: 'stats', component: StatisticsComponent },
+  { path: 'stats/:year/:month', component: StatisticsComponent },
   { path: 'logout', component: LogoutComponent }
 ];
 

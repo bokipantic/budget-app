@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -18,7 +18,6 @@ export class AddExpenseComponent implements OnInit, OnDestroy {
   expenseTransactionCategories;
   fetchCategories: Subscription;
   addTransaction: Subscription;
-  scrollHide: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -26,16 +25,6 @@ export class AddExpenseComponent implements OnInit, OnDestroy {
     private router: Router,
     private verifyTokenService: VerifyTokenService,
     private logoutService: LogoutService) { }
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll($event) {
-    if (window.scrollY) {
-      this.scrollHide = true;
-    }
-    else {
-      this.scrollHide = false;
-    }
-  }
 
   ngOnInit(): void {
     this.verifyTokenService.verifyToken();

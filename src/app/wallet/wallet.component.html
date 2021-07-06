@@ -40,5 +40,14 @@
         </div>
     </div>
 </div>
+<mat-paginator
+    [length]="totalItems" 
+    [pageSize]="itemsPerPage"
+    hidePageSize
+    showFirstLastButtons
+    (page)="onPaginate($event)">
+</mat-paginator>
 
-<app-bottom-navigation *ngIf="!scrollHide"></app-bottom-navigation>
+<div style="height: 100px;"></div>
+<app-bottom-navigation></app-bottom-navigation>
+<!-- <app-bottom-navigation *ngIf="!scrollHide"></app-bottom-navigation> -->

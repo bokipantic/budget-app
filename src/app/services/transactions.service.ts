@@ -8,8 +8,8 @@ export class TransactionsService {
 
   constructor(private http: HttpClient) { }
 
-  fetchTransactions() {
-    return this.http.get('https://budgetapp.digitalcube.rs/api/transactions'); // ?page=1&per_page=20
+  fetchTransactions(pageNumber, pageSize) {
+    return this.http.get('https://budgetapp.digitalcube.rs/api/transactions?page='+pageNumber+'&per_page='+pageSize);
   }
 
   fetchAllIncomeTransactionCategories() {
@@ -20,7 +20,7 @@ export class TransactionsService {
     return this.http.get('https://budgetapp.digitalcube.rs/api/transactions/categories?category_type=outcome');
   }
 
-  fetchTransactionsStatistics() {
-    return this.http.get('https://budgetapp.digitalcube.rs/api/transactions/statistics?year=YYYY&month=MM');
+  fetchTransactionsStatistics(year: number, month: number) {
+    return this.http.get('https://budgetapp.digitalcube.rs/api/transactions/statistics?year='+year+'&month='+month);
   }
 }

@@ -31,9 +31,10 @@
         </mat-radio-button>
     </mat-radio-group>
 
-    <div class="center" *ngIf="!scrollHide">
+    <div class="center">
         <button mat-flat-button color="primary" type="submit" [disabled]="f.invalid">Add an expense</button>
     </div>
 </form>
 
-<app-bottom-navigation *ngIf="!scrollHide"></app-bottom-navigation>
+<div style="height: 140px;"></div>
+<app-bottom-navigation></app-bottom-navigation>

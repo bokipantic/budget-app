@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-// import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   hide = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
         alert('User is successfully created');
         localStorage.setItem('token', JSON.stringify(response['token']));
         form.reset();
-        // Router.navigate
+        this.router.navigate(['/wallet']);
       },
         error => {
           console.log(error);

@@ -1,3 +1,48 @@
-<p>statistics works!</p>
+<div class="logo">
+    <img src="assets/logo.png" alt="logo">
+</div>
+<br>
+<div class="month">
+    <div>
+        <p id="p3">{{ newDate | date: 'MMMM' }} <span>{{ newDate | date: 'yyyy' }}</span></p>
+    </div>
+    <div class="arrows">
+        <a (click)="onPreviousMonth()">
+            <span class="material-icons-outlined">chevron_left</span>
+        </a>
+        <a (click)="onNextMonth()">
+            <span class="material-icons-outlined" style="margin-left: 35px;">chevron_right</span>
+        </a>
+    </div>
+</div>
+<div class="total">
+    <div id="p1">Total in {{ newDate | date: 'MMMM' }}</div>
+    <div id="p2" [ngStyle]="{color: getColor()}">{{ total | number: '1.0-0' }} <span>RSD</span></div>
+</div>
+<div class="expenses text-center">
+    <div id="p4">Expenses</div>
+    <div id="p5">{{ expenses | number: '1.0-0' }} <span>RSD</span></div>
+</div>
+<div class="income text-center">
+    <div id="p4">Income</div>
+    <div id="p5">{{ income | number: '1.0-0' }} <span>RSD</span></div>
+</div>
+<p id="p1">Most spent on</p>
+<div class="categories">
+    <div *ngFor="let byCategory of monthStatistics">
+        <div class="category" *ngIf="byCategory.amount > 0">
+            <div class="text-center">
+                <div id="p8">{{ byCategory.category_name }}</div>
+                <div id="p6">{{ byCategory.amount | number: '1.0-0' }}</div>
+                <div id="p7">RSD</div>
+            </div>
+            <div style="position: relative; top: 7px;">
+                <img src="https://budgetapp.digitalcube.rs/assets/icons/categories/{{ byCategory.category_icon }}"
+                    alt="category" height="34px">
+            </div>
+        </div>
+    </div>
+</div>
 
+<div style="height: 100px;"></div>
 <app-bottom-navigation></app-bottom-navigation>
