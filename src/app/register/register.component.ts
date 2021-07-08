@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { NewUser, User } from '../models/register.model';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  hide = true;
+  hide: boolean = true;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -17,13 +19,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister(form: NgForm) {
-    const user = {
+    const user: User = {
       username: form.value.username,
       password: form.value.password,
       first_name: form.value.firstName,
       last_name: form.value.lastName
     };
-    this.http.post(
+    this.http.post<NewUser>(
       'https://budgetapp.digitalcube.rs/api/tenants/fe71fd8a-47c2-4f4d-84f8-312cf7413f7d/users',
       user)
       .subscribe(response => {

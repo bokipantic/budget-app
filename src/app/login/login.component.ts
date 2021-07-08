@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { Session, User } from '../models/login.model';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  hide = true;
+  hide: boolean = true;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -17,11 +19,11 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: NgForm) {
-    const user = {
+    const user: User = {
       username: form.value.username,
       password: form.value.password
     };
-    this.http.post(
+    this.http.post<Session>(
       'https://budgetapp.digitalcube.rs/api/tenants/fe71fd8a-47c2-4f4d-84f8-312cf7413f7d/sessions',
       user)
       .subscribe(response => {
@@ -45,5 +47,5 @@ export class LoginComponent implements OnInit {
   }
 }
 
-// batigol1 
-// 123
+// username: batigol1 
+// password: 123

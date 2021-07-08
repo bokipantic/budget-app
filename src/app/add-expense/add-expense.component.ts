@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { TransactionsService } from '../services/transactions.service';
 import { LogoutService } from '../services/logout.service';
 import { VerifyTokenService } from '../services/verify-token.service';
+import { AddTransaction, Category, NewTransaction } from '../models/transactions.model';
 
 @Component({
   selector: 'app-add-expense',
@@ -15,7 +16,7 @@ import { VerifyTokenService } from '../services/verify-token.service';
 })
 export class AddExpenseComponent implements OnInit, OnDestroy {
   @ViewChild('f') form: NgForm;
-  expenseTransactionCategories;
+  expenseTransactionCategories: Category[];
   fetchCategories: Subscription;
   addTransaction: Subscription;
 
@@ -28,9 +29,10 @@ export class AddExpenseComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.verifyTokenService.verifyToken();
+
     this.fetchCategories = this.transactionsService.fetchAllExpenseTransactionCategories()
       .subscribe(
-        response => {
+        (response: Category[]) => {
           console.log(response);
           this.expenseTransactionCategories = response;
           for (const category of this.expenseTransactionCategories) {
@@ -83,13 +85,13 @@ export class AddExpenseComponent implements OnInit, OnDestroy {
   }
 
   onAddExpense() {
-    const expense = {
+    const expense: NewTransaction = {
       amount: this.form.value.amount,
       category: this.form.value.category,
       currency: 'RSD',
       description: this.form.value.description
     };
-    this.addTransaction = this.http.post(
+    this.addTransaction = this.http.post<AddTransaction>(
       'https://budgetapp.digitalcube.rs/api/transactions',
       expense)
       .subscribe(response => {

@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { LogoutService } from '../services/logout.service';
 import { TransactionsService } from '../services/transactions.service';
 import { VerifyTokenService } from '../services/verify-token.service';
+import { Category, MonthStats } from '../models/stats.model';
 
 @Component({
   selector: 'app-statistics',
@@ -18,7 +19,7 @@ export class StatisticsComponent implements OnInit {
   expenses: number;
   income: number;
   total: number;
-  monthStatistics: any;
+  monthStatistics: Category[];
 
   constructor(
     private transactionsService: TransactionsService,
@@ -38,7 +39,7 @@ export class StatisticsComponent implements OnInit {
         return this.transactionsService.fetchTransactionsStatistics(this.year, this.month);
       })
     ).subscribe(
-      response => {
+      (response: MonthStats) => {
         console.log(response);
         this.expenses = response['outcome'];
         this.income = response['income'];

@@ -6,6 +6,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { TransactionsService } from '../services/transactions.service';
 import { VerifyTokenService } from '../services/verify-token.service';
 import { LogoutService } from '../services/logout.service';
+import { AllTransactions, Transaction } from '../models/transactions.model';
 
 @Component({
   selector: 'app-wallet',
@@ -17,7 +18,7 @@ export class WalletComponent implements OnInit, OnDestroy {
   itemsPerPage: number;
   pageNumber: number;
   balance: number;
-  allTransactions: any;
+  allTransactions: Transaction[];
   transactionsSub: Subscription;
   // scrollHide: boolean = false;
 
@@ -33,7 +34,7 @@ export class WalletComponent implements OnInit, OnDestroy {
 
     this.transactionsSub = this.transactionsService.fetchTransactions(1, 8)
       .subscribe(
-        response => {
+        (response: AllTransactions) => {
           console.log(response);
           this.totalItems = response['summary'].total_items;
           this.itemsPerPage = response['summary'].per_page;
@@ -53,7 +54,7 @@ export class WalletComponent implements OnInit, OnDestroy {
     this.itemsPerPage = +pageEvent.pageSize;
     this.transactionsSub = this.transactionsService.fetchTransactions(this.pageNumber, this.itemsPerPage)
       .subscribe(
-        response => {
+        (response: AllTransactions) => {
           console.log(response);
           this.balance = response['summary'].balance;
           this.allTransactions = response['transactions'];

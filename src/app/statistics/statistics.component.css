@@ -94,7 +94,8 @@
 .categories {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    overflow: auto;
+    /* flex-wrap: wrap; */
 }
 .category {
     display: flex;
