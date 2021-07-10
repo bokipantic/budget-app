@@ -24,7 +24,6 @@ export class AuthGuard implements CanActivate {
         } else {
           alert(`Error ${response.status}: Username/password combination is not valid`);
           this.logoutService.logout();
-          return false;
         }
       }));
   }

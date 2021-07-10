@@ -8,6 +8,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AddIncomeComponent } from './add-income/add-income.component';
 import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 
 const currentDate: Date = new Date();
 const currentYear: number = currentDate.getFullYear();
@@ -18,8 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'wallet', component: WalletComponent, canActivate: [AuthGuard] },
-  { path: 'wallet/income/add', component: AddIncomeComponent, canActivate: [AuthGuard] },
-  { path: 'wallet/expense/add', component: AddExpenseComponent, canActivate: [AuthGuard] },
+  { path: 'wallet/income/add', component: AddIncomeComponent, canActivate: [AuthGuard], canDeactivate: [CanDeactivateGuard] },
+  { path: 'wallet/expense/add', component: AddExpenseComponent, canActivate: [AuthGuard], canDeactivate: [CanDeactivateGuard] },
   { path: 'stats', redirectTo: `/stats/${currentYear}/${currentMonth}`, pathMatch: 'full' },
   { path: 'stats/:year/:month', component: StatisticsComponent, canActivate: [AuthGuard] },
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] }

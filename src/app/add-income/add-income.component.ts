@@ -2,19 +2,20 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { TransactionsService } from '../services/transactions.service';
 import { LogoutService } from '../services/logout.service';
 import { VerifyTokenService } from '../services/verify-token.service';
 import { AddTransaction, Category, NewTransaction } from '../models/transactions.model';
+import { CanComponentDeactivate } from '../services/can-deactivate-guard.service';
 
 @Component({
   selector: 'app-add-income',
   templateUrl: './add-income.component.html',
   styleUrls: ['./add-income.component.css']
 })
-export class AddIncomeComponent implements OnInit, OnDestroy {
+export class AddIncomeComponent implements OnInit, OnDestroy, CanComponentDeactivate {
   @ViewChild('f') form: NgForm;
   incomeTransactionCategories: Category[];
   fetchCategories: Subscription;
@@ -82,6 +83,14 @@ export class AddIncomeComponent implements OnInit, OnDestroy {
           }
         }
       );
+  }
+  
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.form.value.amount || this.form.value.category || this.form.value.description) {
+      return confirm('Do you want to discard the changes?');
+    } else {
+      return true;
+    }
   }
 
   ngOnDestroy() {
