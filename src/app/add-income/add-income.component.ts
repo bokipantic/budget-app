@@ -28,7 +28,7 @@ export class AddIncomeComponent implements OnInit, OnDestroy {
     private logoutService: LogoutService) { }
 
   ngOnInit(): void {
-    this.verifyTokenService.verifyToken();
+    // this.verifyTokenService.verifyToken();
     
     this.fetchCategories = this.transactionsService.fetchAllIncomeTransactionCategories()
       .subscribe(

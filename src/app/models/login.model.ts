@@ -10,7 +10,7 @@ export interface Session {
     token: string
 }
 
-export interface Token {
+export interface UserLogged {
     username: string,
     first_name: string,
     last_name: string

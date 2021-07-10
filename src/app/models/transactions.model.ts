@@ -1,10 +1,10 @@
-export interface Summary {
+interface Summary {
     total_pages: number,
     total_items: number,
     page: number,
     per_page: number,
-    next: string | null,
-    previous: string | null,
+    next: string,
+    previous: string,
     balance: number
 }
 

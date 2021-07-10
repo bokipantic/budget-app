@@ -30,7 +30,7 @@ export class WalletComponent implements OnInit, OnDestroy {
     private logoutService: LogoutService) { }
 
   ngOnInit(): void {
-    this.verifyTokenService.verifyToken();
+    // this.verifyTokenService.verifyToken();
 
     this.transactionsSub = this.transactionsService.fetchTransactions(1, 8)
       .subscribe(

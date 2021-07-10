@@ -12,7 +12,7 @@ export class LogoutService {
   logout() {
     return this.http.delete('https://budgetapp.digitalcube.rs/api/tenants/fe71fd8a-47c2-4f4d-84f8-312cf7413f7d/sessions')
       .subscribe(response => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
         localStorage.removeItem('token');
       },
         error => {

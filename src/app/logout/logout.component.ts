@@ -16,7 +16,7 @@ export class LogoutComponent implements OnInit {
     private verifyTokenService: VerifyTokenService) { }
 
   ngOnInit(): void {
-    this.verifyTokenService.verifyToken();
+    // this.verifyTokenService.verifyToken();
   }
 
   onLogout() {

@@ -29,7 +29,7 @@ export class StatisticsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.verifyTokenService.verifyToken();
+    // this.verifyTokenService.verifyToken();
 
     this.route.params.pipe(
       switchMap((params: Params) => {
