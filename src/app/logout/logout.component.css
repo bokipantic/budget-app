@@ -10,9 +10,18 @@ p {
     max-width: 236px;
     margin: 0 auto;
 }
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 120px;
+    left: -0.5%;
+    width: 100.5%;
+    background: white;
+}
 button {
-    width: 100%;
-    margin-top: 130px;
+    width: 92%;
     padding: 5px;
     border-radius: 10px;
     font-size: 16px;
